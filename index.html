@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f7f7f4">
+<meta name="description" content="简洁、易用的资源分享与整理空间。">
+<title>资源集 · 发现实用资源</title>
+<style>
+:root{--bg:#f7f7f4;--paper:#fff;--ink:#20231f;--muted:#777d75;--line:#e8e9e3;--accent:#567c68;--soft:#edf3ee}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.wrap{width:min(1080px,calc(100% - 36px));margin:auto}.top{padding:25px 0;border-bottom:1px solid var(--line)}.nav{display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{font-size:21px;font-weight:750;letter-spacing:.04em}.brand span{color:var(--accent)}.nav small{color:var(--muted)}
+.hero{padding:62px 0 36px}.eyebrow{color:var(--accent);font-size:12px;letter-spacing:.18em;font-weight:700}.hero h1{font-size:clamp(32px,6vw,54px);line-height:1.16;letter-spacing:-.04em;margin:13px 0}.hero p{color:var(--muted);max-width:560px;margin:0 0 25px}.search{display:flex;gap:10px;max-width:650px}.search input{flex:1;min-width:0;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:#fff;font:inherit;outline:none}.search input:focus{border-color:var(--accent)}.search button{border:0;border-radius:11px;background:var(--accent);color:#fff;padding:0 20px;font:inherit;cursor:pointer}
+main{padding:20px 0 70px}.section-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:20px 0}.section-head h2{font-size:20px;margin:0}.muted{color:var(--muted);font-size:13px}.filters{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px}.filter{border:1px solid var(--line);background:#fff;color:#5f665e;border-radius:999px;padding:7px 14px;cursor:pointer;font:inherit;font-size:13px}.filter.active{background:var(--soft);border-color:#cbd9ce;color:#315b43}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:20px;min-height:190px;display:flex;flex-direction:column;transition:transform .18s,border-color .18s}.card:hover{transform:translateY(-2px);border-color:#cbd9ce}.tag{font-size:12px;color:var(--accent);background:var(--soft);padding:4px 9px;border-radius:999px;align-self:flex-start}.card h3{font-size:17px;margin:13px 0 6px}.card p{color:var(--muted);font-size:13px;margin:0 0 18px}.card a{color:var(--accent);font-weight:650;text-decoration:none;margin-top:auto}.empty{padding:50px 15px;text-align:center;color:var(--muted);background:#fff;border:1px dashed var(--line);border-radius:16px;grid-column:1/-1}.footer{border-top:1px solid var(--line);padding:24px 0 38px;color:var(--muted);font-size:12px}
+@media(max-width:760px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{padding-top:45px}}@media(max-width:520px){.wrap{width:min(100% - 28px,1080px)}.grid{grid-template-columns:1fr}.search button{padding:0 15px}.hero h1{font-size:36px}.card{min-height:165px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap nav"><div class="brand">资源<span>集</span></div><small>整理好用的数字资源</small></div></header>
+<section class="hero wrap"><div class="eyebrow">RESOURCE HUB</div><h1>让好资源，<br>更容易被发现。</h1><p>把实用工具、软件与精选内容整理在这里。分类浏览，快速搜索，简单获取。</p><form class="search" id="searchForm"><input id="searchInput" type="search" placeholder="搜索资源名称或关键词…" aria-label="搜索资源"><button type="submit">搜索</button></form></section>
+<main class="wrap"><div class="section-head"><h2>资源浏览</h2><span class="muted" id="count">正在载入…</span></div><div class="filters" id="filters"></div><div class="grid" id="grid"><div class="empty">正在载入资源…</div></div></main>
+<footer class="footer"><div class="wrap">资源集 · 仅整理分享信息，请在使用前确认资源来源与适用范围。</div></footer>
+<script>
+const resources=[
+ {title:"示例资源：常用工具合集",category:"实用工具",description:"这里是资源简介。后续可以在在线管理后台替换成你的真实资源。",url:"",code:""},
+ {title:"示例资源：软件与应用",category:"软件应用",description:"可填写软件用途、适用设备、版本说明等内容。",url:"",code:""},
+ {title:"示例资源：影视相关工具",category:"影视资源",description:"可整理工具介绍、使用提示和相关下载信息。",url:"",code:""}
+];
+const grid=document.getElementById('grid'),filters=document.getElementById('filters'),count=document.getElementById('count'),input=document.getElementById('searchInput');
+let category='全部';
+function escapeHtml(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function render(){const q=input.value.trim().toLowerCase();const cats=['全部',...new Set(resources.map(x=>x.category))];filters.innerHTML=cats.map(c=>'<button class="filter '+(c===category?'active':'')+'" data-cat="'+escapeHtml(c)+'">'+escapeHtml(c)+'</button>').join('');const list=resources.filter(x=>(category==='全部'||x.category===category)&&(!q||(x.title+' '+x.description+' '+x.category).toLowerCase().includes(q)));count.textContent=list.length+' 项资源';grid.innerHTML=list.length?list.map(x=>'<article class="card"><span class="tag">'+escapeHtml(x.category)+'</span><h3>'+escapeHtml(x.title)+'</h3><p>'+escapeHtml(x.description)+'</p>'+(x.url?'<a href="'+escapeHtml(x.url)+'" target="_blank" rel="noopener">获取资源 ↗</a>':'<span class="muted">资源链接待补充</span>')+'</article>').join(''):'<div class="empty">没有找到相关资源，试试其他关键词。</div>'}
+filters.addEventListener('click',e=>{const b=e.target.closest('button[data-cat]');if(b){category=b.dataset.cat;render()}});
+document.getElementById('searchForm').addEventListener('submit',e=>{e.preventDefault();render()});input.addEventListener('input',render);render();
+</script>
+</body></html>
