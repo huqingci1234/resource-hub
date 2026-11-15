@@ -1,28 +1,15 @@
 {
   "spider": "https://gh-proxy.com/https://raw.githubusercontent.com/niubihu1/tvbox/main/jar/easy11.14.png;md5;0fde605daa324202bfda23e5cfef0a65",
   "wallpaper": "",
-  "logo": "https://gh-proxy.com/https://raw.githubusercontent.com/niubihu1/tvbox/main/logo.png",
+  "logo": "",
   "danmaku": "http://127.0.0.1:9978/proxy?do=danmaku&name={name}&episode={episode}",
   "sites": [
     {
       "key": "豆瓣",
-      "name": "🐯牛虎 ┃ 豆瓣热播",
+      "name": "豆瓣热播",
       "type": 3,
       "api": "csp_Douban",
       "searchable": 0
-    },
-    {
-      "key": "配置中心",
-      "name": "🐯牛虎 ┃ 配置中心",
-      "type": 3,
-      "api": "csp_Config",
-      "searchable": 0,
-      "changeable": 0,
-      "indexs": 0,
-      "style": {
-        "type": "rect",
-        "ratio": 1.618
-      }
     },
     {
       "key": "CZ",
@@ -2380,7 +2367,7 @@
   ],
   "lives": [
     {
-      "name": "🐯牛虎 ┃ 官方综合",
+      "name": "综合直播（第三方源）",
       "type": 0,
       "url": "https://gh-proxy.com/https://raw.githubusercontent.com/niubihu1/tvbox/main/live.txt",
       "playerType": 1,
