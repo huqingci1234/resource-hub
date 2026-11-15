@@ -1,12 +1,5 @@
 [
   {
-    "title": "示例资源：常用工具合集",
-    "category": "实用工具",
-    "description": "这里是资源简介。后续可以在本地管理工具中替换成你的真实资源。",
-    "url": "",
-    "code": ""
-  },
-  {
     "title": "示例资源：软件与应用",
     "category": "软件应用",
     "description": "可填写软件用途、适用设备、版本说明等内容。",
@@ -18,6 +11,13 @@
     "category": "影视资源",
     "description": "可整理工具介绍、使用提示和相关下载信息。",
     "url": "",
+    "code": ""
+  },
+  {
+    "title": "影视仓",
+    "category": "影视汁源APP",
+    "description": "",
+    "url": "https://huqingci1234.github.io/hmh-share",
     "code": ""
   }
 ]
