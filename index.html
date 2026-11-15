@@ -31,16 +31,13 @@ main{padding:20px 0 70px}.section-head{display:flex;align-items:center;justify-c
 <main class="wrap"><div class="section-head"><h2>资源浏览</h2><span class="muted" id="count">正在载入…</span></div><div class="filters" id="filters"></div><div class="grid" id="grid"><div class="empty">正在载入资源…</div></div></main>
 <footer class="footer"><div class="wrap">发现实用资源 · 尤湖沿科技提供技术与支持 · 请在使用前确认资源来源与适用范围。</div></footer>
 <script>
-const resources=[
- {title:"示例资源：常用工具合集",category:"实用工具",description:"这里是资源简介。后续可以在在线管理后台替换成你的真实资源。",url:"",code:""},
- {title:"示例资源：软件与应用",category:"软件应用",description:"可填写软件用途、适用设备、版本说明等内容。",url:"",code:""},
- {title:"示例资源：影视相关工具",category:"影视资源",description:"可整理工具介绍、使用提示和相关下载信息。",url:"",code:""}
-];
+let resources=[];
 const grid=document.getElementById('grid'),filters=document.getElementById('filters'),count=document.getElementById('count'),input=document.getElementById('searchInput');
 let category='全部';
 function escapeHtml(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function render(){const q=input.value.trim().toLowerCase();const cats=['全部',...new Set(resources.map(x=>x.category))];filters.innerHTML=cats.map(c=>'<button class="filter '+(c===category?'active':'')+'" data-cat="'+escapeHtml(c)+'">'+escapeHtml(c)+'</button>').join('');const list=resources.filter(x=>(category==='全部'||x.category===category)&&(!q||(x.title+' '+x.description+' '+x.category).toLowerCase().includes(q)));count.textContent=list.length+' 项资源';grid.innerHTML=list.length?list.map(x=>'<article class="card"><span class="tag">'+escapeHtml(x.category)+'</span><h3>'+escapeHtml(x.title)+'</h3><p>'+escapeHtml(x.description)+'</p>'+(x.url?'<a href="'+escapeHtml(x.url)+'" target="_blank" rel="noopener">获取资源 ↗</a>':'<span class="muted">资源链接待补充</span>')+'</article>').join(''):'<div class="empty">没有找到相关资源，试试其他关键词。</div>'}
+async function loadResources(){try{const response=await fetch('./resources.json?v='+Date.now(),{cache:'no-store'});if(!response.ok)throw new Error('资源数据加载失败');const data=await response.json();resources=Array.isArray(data)?data:[];render()}catch(error){grid.innerHTML='<div class="empty">资源暂时无法载入，请稍后刷新。</div>';count.textContent='加载失败'}}
 filters.addEventListener('click',e=>{const b=e.target.closest('button[data-cat]');if(b){category=b.dataset.cat;render()}});
-document.getElementById('searchForm').addEventListener('submit',e=>{e.preventDefault();render()});input.addEventListener('input',render);render();
+document.getElementById('searchForm').addEventListener('submit',e=>{e.preventDefault();render()});input.addEventListener('input',render);loadResources();
 </script>
 </body></html>
