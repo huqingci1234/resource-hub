@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f5f7f4">
+<title>发现实用资源｜本地管理工具</title>
+<style>
+:root{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#202820;background:#f4f6f3}*{box-sizing:border-box}body{margin:0;padding:24px 14px 50px}.wrap{max-width:920px;margin:auto}.head{margin:8px 0 22px}.head h1{font-size:27px;margin:0 0 6px}.muted{color:#68736a;font-size:13px}.panel{background:#fff;border:1px solid #e1e8e1;border-radius:16px;padding:18px;margin:14px 0;box-shadow:0 5px 18px #2030200a}.panel h2{font-size:17px;margin:0 0 14px}.row{display:flex;gap:10px;flex-wrap:wrap}.row>*{flex:1}.field{margin:10px 0}.field label{display:block;font-size:13px;font-weight:650;margin-bottom:6px}input,textarea{width:100%;padding:11px 12px;border:1px solid #d9e0d9;border-radius:9px;font:inherit;background:#fff}textarea{min-height:76px;resize:vertical}button{border:0;border-radius:9px;padding:10px 15px;background:#557c65;color:#fff;font:inherit;font-weight:650;cursor:pointer}button.secondary{background:#edf2ed;color:#385541}button.danger{background:#fff0ed;color:#a13d2c}button:disabled{opacity:.5;cursor:not-allowed}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.status{padding:10px 12px;border-radius:9px;background:#f0f4ef;color:#405d47;font-size:13px;margin-top:10px;white-space:pre-wrap}.status.error{background:#fff0ed;color:#9a3528}.item{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;padding:13px 0;border-top:1px solid #edf0ec}.item:first-child{border-top:0}.item h3{font-size:15px;margin:0 0 4px}.item p{font-size:12px;color:#68736a;margin:0;overflow-wrap:anywhere}.item-actions{display:flex;gap:6px;flex-shrink:0}.item-actions button{padding:7px 10px;font-size:12px}.hint{font-size:12px;color:#68736a;line-height:1.7}.hidden{display:none!important}@media(max-width:560px){body{padding:16px 10px}.panel{padding:14px}.item{display:block}.item-actions{margin-top:9px}}
+</style>
+</head>
+<body><main class="wrap">
+<header class="head"><h1>发现实用资源 · 本地管理</h1><div class="muted">仅供管理员在自己的电脑上使用，编辑完成后发布到 GitHub Pages。</div></header>
+<section class="panel">
+<h2>① 连接 GitHub</h2>
+<div class="field"><label for="token">GitHub 访问令牌（Fine-grained personal access token）</label><input id="token" type="password" autocomplete="off" placeholder="粘贴你的 GitHub Token"></div>
+<div class="hint">令牌只保存在当前页面内存中，关闭页面后清空。请只给 resource-hub 仓库的 Contents 读取和写入权限，不要把令牌发给别人，也不要写进网站文件。</div>
+<div class="actions"><button id="connect">连接并读取资源</button><button class="secondary" id="forget">清空令牌</button></div>
+<div id="connection" class="status">尚未连接。</div>
+</section>
+<section class="panel hidden" id="editorPanel">
+<h2>② 添加或编辑资源</h2>
+<input type="hidden" id="editIndex" value="-1">
+<div class="row">
+<div class="field"><label for="title">资源名称 *</label><input id="title" maxlength="100" placeholder="例如：在线图片压缩工具"></div>
+<div class="field"><label for="category">资源分类 *</label><input id="category" maxlength="40" placeholder="例如：实用工具"></div>
+</div>
+<div class="field"><label for="description">资源简介</label><textarea id="description" maxlength="300" placeholder="简单介绍资源用途"></textarea></div>
+<div class="row">
+<div class="field"><label for="url">资源网址</label><input id="url" type="url" placeholder="https://..."></div>
+<div class="field"><label for="code">提取码 / 备注（可选）</label><input id="code" maxlength="100" placeholder="例如：提取码或补充说明"></div>
+</div>
+<div class="actions"><button id="saveLocal">保存到列表</button><button class="secondary" id="cancelEdit">取消编辑</button></div>
+<div class="hint">先保存到当前页面的待发布列表，确认无误后再统一发布。</div>
+</section>
+<section class="panel hidden" id="listPanel">
+<div class="row" style="align-items:center"><h2 style="margin:0">③ 资源列表</h2><div class="muted" id="total" style="text-align:right">0 项</div></div>
+<div id="list" style="margin-top:12px"></div>
+<div class="actions"><button id="publish">发布到 GitHub</button><button class="secondary" id="reload">重新读取线上数据</button></div>
+<div id="publishStatus" class="status">修改只在本页面暂存，点击发布后才会更新网站。</div>
+</section>
+<section class="panel"><h2>使用说明</h2><div class="hint">1. 在 Windows 上双击打开本文件（admin.html），建议使用 Edge 或 Chrome。<br>2. 创建 GitHub Fine-grained Token，Repository access 只选 huqingci1234/resource-hub；Repository permissions 中 Contents 设为 Read and write。<br>3. 粘贴令牌并连接，添加或修改资源。<br>4. 点击“发布到 GitHub”，等待成功提示。网站通常需要一点时间完成 Pages 更新。<br><br>注意：令牌相当于仓库写入钥匙。不要将本管理文件连同令牌截图或分享给他人。若怀疑令牌泄露，请立即到 GitHub 撤销。</div><p class="hint"><a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">打开 GitHub 创建 Fine-grained Token 页面</a></p></section>
+</main>
+<script>
+const OWNER="huqingci1234",REPO="resource-hub",BRANCH="main",PATH="resources.json";
+let token="",items=[],fileSha="",dirty=false;
+const $=id=>document.getElementById(id);
+function status(id,msg,error=false){$(id).textContent=msg;$(id).classList.toggle("error",error)}
+function headers(){return {Authorization:"Bearer "+token,Accept:"application/vnd.github+json","X-GitHub-Api-Version":"2022-11-28"}}
+function decodeBase64Utf8(b64){const bin=atob(b64.replace(/\n/g,""));const bytes=Uint8Array.from(bin,c=>c.charCodeAt(0));return new TextDecoder().decode(bytes)}
+function encodeBase64Utf8(str){const bytes=new TextEncoder().encode(str);let bin="";for(let i=0;i<bytes.length;i+=0x8000)bin+=String.fromCharCode(...bytes.subarray(i,i+0x8000));return btoa(bin)}
+async function readOnline(){const res=await fetch("https://api.github.com/repos/"+OWNER+"/"+REPO+"/contents/"+PATH+"?ref="+BRANCH,{headers:headers(),cache:"no-store"});if(!res.ok)throw new Error("读取失败："+res.status+" "+await res.text());const data=await res.json();fileSha=data.sha;const parsed=JSON.parse(decodeBase64Utf8(data.content));if(!Array.isArray(parsed))throw new Error("resources.json 格式不正确");items=parsed;dirty=false;render();$("editorPanel").classList.remove("hidden");$("listPanel").classList.remove("hidden");status("connection","连接成功，已读取 "+items.length+" 项资源。")}
+function render(){ $("total").textContent=items.length+" 项资源"+(dirty?"（有未发布修改）":"");$("list").innerHTML=items.length?items.map((x,i)=>'<div class="item"><div><h3>'+esc(x.title||"未命名资源")+'</h3><p>'+esc(x.category||"未分类")+' · '+esc(x.description||"无简介")+(x.url?"<br>"+esc(x.url):"")+(x.code?"<br>备注："+esc(x.code):"")+'</p></div><div class="item-actions"><button class="secondary" data-edit="'+i+'">编辑</button><button class="danger" data-delete="'+i+'">删除</button></div></div>').join(""):'<p class="muted">还没有资源，使用上方表单添加。</p>'}
+function esc(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function clearForm(){$("editIndex").value="-1";["title","category","description","url","code"].forEach(id=>$(id).value="")}
+$("connect").onclick=async()=>{token=$("token").value.trim();if(!token){status("connection","请先粘贴 GitHub Token。",true);return}try{status("connection","正在连接 GitHub…");await readOnline()}catch(e){status("connection",e.message,true)}};
+$("forget").onclick=()=>{token="";$("token").value="";status("connection","令牌已从当前页面清空。")};
+$("saveLocal").onclick=()=>{const title=$("title").value.trim(),category=$("category").value.trim(),url=$("url").value.trim();if(!title||!category){alert("请填写资源名称和分类。");return}if(url&&!/^https?:\/\//i.test(url)){alert("资源网址请以 http:// 或 https:// 开头。");return}const obj={title,category,description:$("description").value.trim(),url,code:$("code").value.trim()};const i=Number($("editIndex").value);if(i>=0)items[i]=obj;else items.push(obj);dirty=true;render();clearForm()};
+$("cancelEdit").onclick=clearForm;
+$("list").onclick=e=>{const eb=e.target.closest("[data-edit]"),db=e.target.closest("[data-delete]");if(eb){const i=Number(eb.dataset.edit),x=items[i];$("editIndex").value=i;["title","category","description","url","code"].forEach(k=>$(k).value=x[k]||"");window.scrollTo({top:$("editorPanel").offsetTop,behavior:"smooth"})}if(db){const i=Number(db.dataset.delete);if(confirm("确定删除“"+items[i].title+"”吗？")){items.splice(i,1);dirty=true;render();clearForm()}}};
+$("publish").onclick=async()=>{if(!token){status("publishStatus","请先连接 GitHub。",true);return}if(!confirm("确定将当前 "+items.length+" 项资源发布到线上网站吗？"))return;try{$("publish").disabled=true;status("publishStatus","正在提交到 GitHub…");const body={message:"Update resource list from local admin",content:encodeBase64Utf8(JSON.stringify(items,null,2)+"\n"),branch:BRANCH,sha:fileSha};const res=await fetch("https://api.github.com/repos/"+OWNER+"/"+REPO+"/contents/"+PATH,{method:"PUT",headers:{...headers(),"Content-Type":"application/json"},body:JSON.stringify(body)});if(!res.ok)throw new Error("发布失败："+res.status+" "+await res.text());const out=await res.json();fileSha=out.content.sha;dirty=false;render();status("publishStatus","发布成功！GitHub 已收到更新。网页通常需要等待约 1–3 分钟完成部署，然后刷新网站。")}catch(e){status("publishStatus",e.message,true)}finally{$("publish").disabled=false}};
+$("reload").onclick=async()=>{if(dirty&&!confirm("重新读取会丢弃当前尚未发布的修改，继续吗？"))return;try{status("publishStatus","正在重新读取…");await readOnline();status("publishStatus","已重新读取 GitHub 上的最新资源。")}catch(e){status("publishStatus",e.message,true)}};
+</script></body></html>
