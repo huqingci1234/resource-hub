@@ -43,12 +43,21 @@ async function fetchJson(raw) {
 }
 
 const arrayFields = ["sites", "parses", "lives", "flags", "ijk", "ads"];
-const merged = Object.fromEntries(arrayFields.map(k => [k, []]));
-const seen = Object.fromEntries(arrayFields.map(k => [k, new Set()]));
+const approvedSources = (registry.sources || []).filter(s =>
+  s.enabled === true && s.authorized === true && s.redistribution_allowed === true
+);
+
+if (approvedSources.length === 0) {
+  console.log("没有已登记且获准再发布的来源；为保护现有配置，本次不修改 yuhuyan.json。");
+  process.exit(0);
+}
+
+// 从现有配置开始合并，避免新来源为空字段时覆盖已有资源。
+const merged = Object.fromEntries(arrayFields.map(k => [k, Array.isArray(output[k]) ? [...output[k]] : []]));
+const seen = Object.fromEntries(arrayFields.map(k => [k, new Set(merged[k].map(item => JSON.stringify(item)))]));
 const errors = [];
 
-for (const source of (registry.sources || [])) {
-  if (!(source.enabled === true && source.authorized === true && source.redistribution_allowed === true)) continue;
+for (const source of approvedSources) {
   try {
     const data = await fetchJson(source.url);
     if (!data || typeof data !== "object" || Array.isArray(data)) throw new Error("返回内容不是 JSON 配置对象");
@@ -77,7 +86,7 @@ output.name = "尤湖沿科技571111598";
 output.version = "1.1.0";
 output.aggregation = {
   updated_at: new Date().toISOString(),
-  source_count: (registry.sources || []).filter(s => s.enabled === true && s.authorized === true && s.redistribution_allowed === true).length,
+  source_count: approvedSources.length,
   item_count: arrayFields.reduce((n, k) => n + output[k].length, 0),
   note: "仅合并已登记并声明获准再发布的配置来源"
 };
