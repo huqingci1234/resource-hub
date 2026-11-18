@@ -28,5 +28,13 @@
     "url": "",
     "code": "",
     "date": "2026-11-16"
+  },
+  {
+    "title": "XMBox_v3.2.0版",
+    "category": "影视",
+    "description": "更新内容\n修复：升级后启动崩溃 / 长按收藏崩溃\n修复：电视版长按 OK 收藏被控制栏抢走\n加固：收藏操作不再能把应用打崩\n\n📋 系统要求\nAndroid 5.0 (API 21) 及以上\nARM64-V8A: 推荐新设备使用，性能更优\nARM V7A: 兼容老设备，适配性更强\n\n📲版本介绍\nTablet-平板\nMobile-手机\nLeanback-电视\nv7a-老设备 v8a-新设备",
+    "url": "",
+    "code": "找群主拿",
+    "date": "2026-11-19"
   }
 ]
