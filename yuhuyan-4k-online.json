@@ -1,104 +1,14 @@
 {
-  "spider": "https://qiniu.gongxueyun.com/upload/2371282/2026-11-12/noknow/759250805_1_1794505074145.jar;md5;53b51f8c239b727ce4cd18dc2c3b7a99",
+  "spider": "http://我不是.摸鱼儿.top/by/jar/moyu.php;md5;0a9c6b44a20445a9b3c2a39763ef7cf1",
   "name": "956979768",
   "sites": [
     {
-      "key": "Libvio",
+      "key": "移动",
+      "name": "956979768",
       "type": 3,
-      "api": "csp_Libvio",
+      "api": "csp_YD",
       "searchable": 1,
-      "changeable": 1,
-      "ext": {
-        "site": [
-          "https://libviofabu.com",
-          "https://libvio.app",
-          "https://libfabu.com",
-          "https://libviogroup.github.io"
-        ]
-      }
-    },
-    {
-      "key": "KZN",
-      "type": 3,
-      "api": "csp_KZN",
-      "searchable": 1,
-      "changeable": 1
-    },
-    {
-      "key": "Yidong4K",
-      "type": 3,
-      "api": "csp_Yidong4K",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0,
-      "changeable": 1
-    },
-    {
-      "key": "WoNiu",
-      "type": 3,
-      "api": "csp_WoNiu",
-      "searchable": 1,
-      "changeable": 1,
-      "ext": {
-        "site": "https://wn4k.com/"
-      }
-    },
-    {
-      "key": "Qiwei",
-      "type": 3,
-      "api": "csp_Qiwei",
-      "searchable": 1,
-      "filterable": 0,
-      "ext": {
-        "site": [
-          "https://www.qwnull.com",
-          "https://www.qwmkv.com",
-          "https://www.qwfilm.com",
-          "https://www.qnmp4.com",
-          "https://www.qnnull.com",
-          "https://www.qnhot.com",
-          "https://www.qncool.com"
-        ]
-      }
-    },
-    {
-      "key": "gying",
-      "type": 3,
-      "api": "csp_Gying",
-      "searchable": 1,
-      "quickSearch": 0,
-      "filterable": 0,
-      "ext": {
-        "site": [
-          "https://www.教父.com",
-          "https://www.星际穿越.com",
-          "https://www.楚门的世界.com",
-          "https://www.泰坦尼克号.com",
-          "https://www.盗梦空间.com",
-          "https://www.肖申克的救赎.com",
-          "https://www.阿甘正传.com",
-          "https://www.黑客帝国.com"
-        ]
-      }
-    },
-    {
-      "key": "ShuangXing",
-      "type": 3,
-      "api": "csp_ShuangXing",
-      "searchable": 1,
-      "quickSearch": 1,
-      "changeable": 1,
-      "style": {
-        "type": "list",
-        "ratio": 1.433
-      }
-    },
-    {
-      "key": "DianYingYunJi",
-      "type": 3,
-      "api": "csp_DianYingYunJi",
-      "searchable": 1,
-      "changeable": 1
+      "quickSearch": 1
     }
   ]
 }
