@@ -1,12 +1,9 @@
 {
   "spider": "https://qiniu.gongxueyun.com/upload/2371282/2026-11-12/noknow/759250805_1_1794505074145.jar;md5;53b51f8c239b727ce4cd18dc2c3b7a99",
-  "name": "独立4K在线直播放源（潇洒 + 我不是摸鱼儿筛选整理）",
-  "logo": "https://modelscope-resouces.oss-cn-zhangjiakou.aliyuncs.com/avatar%2Ff5309172-1af6-4c4f-a1c5-a4773a1cc718.gif",
-  "wallpaper": "http://127.0.0.1:9978/proxy?do=wallpaper",
+  "name": "956979768",
   "sites": [
     {
       "key": "Libvio",
-      "name": "📺┆立播┆4K",
       "type": 3,
       "api": "csp_Libvio",
       "searchable": 1,
@@ -22,7 +19,6 @@
     },
     {
       "key": "KZN",
-      "name": "😋┆指南┆4K",
       "type": 3,
       "api": "csp_KZN",
       "searchable": 1,
@@ -30,7 +26,6 @@
     },
     {
       "key": "Yidong4K",
-      "name": "📶┆移动┆4K",
       "type": 3,
       "api": "csp_Yidong4K",
       "searchable": 1,
@@ -40,7 +35,6 @@
     },
     {
       "key": "WoNiu",
-      "name": "🐌┆蜗牛┆4K",
       "type": 3,
       "api": "csp_WoNiu",
       "searchable": 1,
@@ -51,7 +45,6 @@
     },
     {
       "key": "Qiwei",
-      "name": "🌈┆七味┆4K",
       "type": 3,
       "api": "csp_Qiwei",
       "searchable": 1,
@@ -70,7 +63,6 @@
     },
     {
       "key": "gying",
-      "name": "👀┆观影┆4K",
       "type": 3,
       "api": "csp_Gying",
       "searchable": 1,
@@ -91,7 +83,6 @@
     },
     {
       "key": "ShuangXing",
-      "name": "🌟┆双星┆4K",
       "type": 3,
       "api": "csp_ShuangXing",
       "searchable": 1,
@@ -104,35 +95,10 @@
     },
     {
       "key": "DianYingYunJi",
-      "name": "☁️┆云集┆4K",
       "type": 3,
       "api": "csp_DianYingYunJi",
       "searchable": 1,
       "changeable": 1
     }
-  ],
-  "lives": [],
-  "parses": [],
-  "_catalog": {
-    "description": "仅收录筛选为在线网页播放、无需绑定阿里云盘/夸克/百度等网盘账号的4K站点。未通过实际播放测试的条目仍需客户端验证。",
-    "sources": [
-      {
-        "name": "我不是摸鱼儿",
-        "url": "http://我不是.摸鱼儿.top",
-        "backup": [
-          "http://www.y456y.com",
-          "http://fish.y456y.com"
-        ],
-        "backup_json": "https://raw.githubusercontent.com/lubin776/tvbox-api-backup/main/tvbox/%E6%91%B8%E9%B1%BC.json"
-      },
-      {
-        "name": "潇洒",
-        "url": "https://9877.kstore.space/sun.json",
-        "backup_json": "https://raw.githubusercontent.com/lubin776/tvbox-api-backup/main/tvbox/%E6%BD%87%E6%B4%92.json"
-      }
-    ],
-    "selection": "筛选基于来源配置的4K分类标记及站点 API 类型；排除了 csp_PanWebShare、csp_FishCloud、网盘/云盘站点和无法确认免绑定网盘的加密扩展项。",
-    "source_snapshot": "2026-11-22",
-    "excluded_count": 35
-  }
+  ]
 }
