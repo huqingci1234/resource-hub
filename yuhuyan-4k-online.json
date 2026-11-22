@@ -9,6 +9,52 @@
       "api": "csp_YD",
       "searchable": 1,
       "quickSearch": 1
+    },
+    {
+      "key": "4K指南",
+      "name": "956979768",
+      "type": 3,
+      "api": "csp_4KZhinan",
+      "jar": "https://raw.githubusercontent.com/qist/tvbox/master/xiaosa/spider.jar",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "ext": {
+        "site": [
+          "https://4kzn.cc"
+        ]
+      }
+    },
+    {
+      "key": "小丑",
+      "name": "956979768",
+      "type": 3,
+      "api": "csp_4KZhinan",
+      "jar": "https://raw.githubusercontent.com/qist/tvbox/master/xiaosa/spider.jar",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "ext": {
+        "site": [
+          "https://4kxc.com"
+        ]
+      }
+    },
+    {
+      "key": "茉莉4K",
+      "name": "956979768",
+      "type": 3,
+      "api": "csp_HDmoli",
+      "jar": "https://raw.githubusercontent.com/qist/tvbox/master/xiaosa/spider.jar",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "ext": {
+        "site": [
+          "https://www.hdmoli.me",
+          "https://www.hdmoli.org"
+        ]
+      }
     }
   ]
 }
