@@ -86,5 +86,13 @@
     "url": "https://guangsuys.top",
     "code": "",
     "date": ""
+  },
+  {
+    "title": "影视仓TV版6.2.10版",
+    "category": "影视仓TV版6.2.10版",
+    "description": "更新说明：\n1.默认播放器切换为ijkpro：原生 FFmpeg 内核，冷门封装与分\n片格式兼容性更好\n2.ijkpro 硬解覆盖 H.264/ HEVC /VP8/VP9/ AV1，4K 高码率更流畅\n3.ijkpro 软解改走 GLES2 着色器上屏：支持 full range 片源，BT.2020 片源色彩不再过饱和\n4.字幕能力增强：支持MKV/MP4内嵌字体与ASS特效字幕，硬解直出也能显示字幕\n5.修复「解码方式」选择不保存的问题\n6关闭起播埋点，减少日志开销",
+    "url": "https://pan.xunlei.com/s/VP7Agr2MJjR-m3buibeFRFOGA1?pwd=agid#",
+    "code": "迅雷口令    尤湖沿资源分享",
+    "date": "2026-11-26"
   }
 ]
